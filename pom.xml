@@ -75,6 +75,4 @@
     <url>scm:git:git@github.com:wdev/log4j-over-slf4f.git</url>
     <developerConnection>scm:git:git@github.com:wdev/log4j-over-slf4f.git</developerConnection>
   </scm>
-  <build>
-  </build>
 </project>

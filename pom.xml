@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-parent</artifactId>
-    <version>1.6.4-SNAPSHOT</version>
+    <version>1.6.4</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -14,8 +14,7 @@
 	<artifactId>log4j-over-slf4j-fix</artifactId>
 	<packaging>jar</packaging>
 	<name>Log4j Implemented Over SLF4J</name>
-
-	<url>http://www.slf4j.org</url>
+ 	<url>http://www.slf4j.org</url>
 
   <description>
     <!-- 

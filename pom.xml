@@ -11,7 +11,7 @@
   <modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.slf4j</groupId>
-	<artifactId>log4j-over-slf4j</artifactId>
+	<artifactId>log4j-over-slf4j-fix</artifactId>
 	<packaging>jar</packaging>
 	<name>Log4j Implemented Over SLF4J</name>
 

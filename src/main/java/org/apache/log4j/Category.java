@@ -16,7 +16,6 @@
 
 package org.apache.log4j;
 
-import org.apache.log4j.helpers.NullEnumeration;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
@@ -78,8 +77,12 @@ public class Category {
     return name;
   }
 
+  /**
+   * Alterado para atender as necessidades do Filenet P8
+   * @return uma instância do Enumeration que possui um elemento ConsoleAppender
+   */
   public Enumeration getAllAppenders() {
-    return AlwaysHasElementsEnumeration.getInstance(); //NullEnumeration.getInstance();
+         return AlwaysHasElementsEnumeration.getInstance(); //NullEnumeration.getInstance();
   }
 
   /**

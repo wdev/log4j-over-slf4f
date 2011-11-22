@@ -18,29 +18,31 @@
 package org.apache.log4j.helpers;
 
 import java.util.Enumeration;
-import java.util.NoSuchElementException;
+import org.apache.log4j.ConsoleAppender;
 
 /**
  * An always-empty Enumerator.
- *
- * @author Anders Kristensen
- * @since version 1.0
+ * Implementado para suprir a necessidade do Filent P8
  */
 public class AlwaysHasElementsEnumeration implements Enumeration {
   private static final AlwaysHasElementsEnumeration instance = new AlwaysHasElementsEnumeration();
-
+  
+  private boolean hasMore;
+  
   private AlwaysHasElementsEnumeration() {
+      hasMore = true;
   }
-
+  
   public static AlwaysHasElementsEnumeration getInstance() {
-    return instance;
+      return instance;
   }
 
   public boolean hasMoreElements() {
-    return true;
+      return hasMore;
   }
 
   public Object nextElement() {
-    throw new NoSuchElementException();
+      hasMore = false;
+      return new ConsoleAppender();
   }
 }

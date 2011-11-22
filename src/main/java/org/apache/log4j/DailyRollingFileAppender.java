@@ -19,17 +19,36 @@ import org.apache.log4j.spi.ErrorHandler;
 import org.apache.log4j.spi.Filter;
 import org.apache.log4j.spi.Layout;
 import org.apache.log4j.spi.LoggingEvent;
-import org.apache.log4j.spi.OptionHandler;
 
 /**
- * Implementado para suprir a necessidade do Filenet P8
- * 
+ * Implementado para suprir a necessidade do P8
  */
-public class ConsoleAppender implements Appender, OptionHandler {
-
+public class DailyRollingFileAppender implements Appender {
+    
     private String name;
     private Layout layout;
+    private String filename;
+    private String datePattern;
+
+    public String getDatePattern() {
+        return datePattern;
+    }
+
+    public void setDatePattern(String datePattern) {
+        this.datePattern = datePattern;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
     
+    public DailyRollingFileAppender(Layout layout, String filename, String datePattern) {
+        
+    }
     public void activateOptions() {
         
     }
@@ -62,18 +81,22 @@ public class ConsoleAppender implements Appender, OptionHandler {
 
     public void setLayout(Layout layout) {
         this.layout = layout;
-     }
+    }
 
     public Layout getLayout() {
         return layout;
-     }
+    }
 
     public void setName(String name) {
         this.name = name;
-     }
+    }
 
     public boolean requiresLayout() {
         return false;
-     }
+    }
+    
+    protected void subAppend(LoggingEvent event) {
+        
+    }
     
 }

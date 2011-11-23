@@ -21,8 +21,8 @@ import java.util.Enumeration;
 import org.apache.log4j.ConsoleAppender;
 
 /**
- * An always-empty Enumerator.
- * Implementado para suprir a necessidade do Filent P8
+ * Classe implementada para atender problema de utilização do Log4j pelo Filenet 
+ * P8
  */
 public class AlwaysHasElementsEnumeration implements Enumeration {
   private static final AlwaysHasElementsEnumeration instance = new AlwaysHasElementsEnumeration();

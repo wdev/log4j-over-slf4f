@@ -21,7 +21,8 @@ import org.apache.log4j.spi.Layout;
 import org.apache.log4j.spi.LoggingEvent;
 
 /**
- * Implementado para suprir a necessidade do P8
+* Classe implementada para atender problema de utilização do Log4j pelo Filenet 
+ * P8
  */
 public class DailyRollingFileAppender implements Appender {
     

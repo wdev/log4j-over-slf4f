@@ -15,6 +15,8 @@
  */
 package org.apache.log4j;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.log4j.spi.ErrorHandler;
 import org.apache.log4j.spi.Filter;
 import org.apache.log4j.spi.Layout;
@@ -22,27 +24,36 @@ import org.apache.log4j.spi.LoggingEvent;
 import org.apache.log4j.spi.OptionHandler;
 
 /**
-* Classe implementada para atender problema de utilização do Log4j pelo Filenet 
+ * Classe implementada para atender problema de utilização do Log4j pelo Filenet 
  * P8
- * 
+ * @author guerra
  */
-public class ConsoleAppender implements Appender, OptionHandler {
+public abstract class AppenderSkeleton implements Appender, OptionHandler {
 
+    private Filter firstFilter;
+    private List filters = new ArrayList();
     private String name;
+    private ErrorHandler errorHandler;
     private Layout layout;
+    private Priority priority;
     
-    public void activateOptions() {
-        
-    }
     public void addFilter(Filter newFilter) {
+        if (firstFilter == null) {
+            this.firstFilter = newFilter;
+        } else {
+            filters.add(newFilter);
+        }
     }
 
     public Filter getFilter() {
-        return null;
+        Filter ft = (Filter)filters.get(0);
+        filters.remove(0);
+        return ft;
     }
 
     public void clearFilters() {
-     }
+        filters.clear();
+    }
 
     public void close() {
     }
@@ -55,26 +66,51 @@ public class ConsoleAppender implements Appender, OptionHandler {
     }
 
     public void setErrorHandler(ErrorHandler errorHandler) {
+        this.errorHandler = errorHandler;
     }
 
     public ErrorHandler getErrorHandler() {
-        return null;
+        return errorHandler;
     }
 
     public void setLayout(Layout layout) {
         this.layout = layout;
-     }
+    }
 
     public Layout getLayout() {
         return layout;
-     }
+    }
 
     public void setName(String name) {
         this.name = name;
-     }
+    }
 
     public boolean requiresLayout() {
         return false;
-     }
+    }
+
+    public void activateOptions() {
+    }
+       
+    protected abstract void append(LoggingEvent event);
     
-}
+    public void finalize() throws Throwable {
+        super.finalize();
+    }
+    
+    public Priority getThreshold() {
+        return priority;
+    }
+    
+    public Filter getFirstFilter() {
+        return firstFilter;
+    }
+  
+    public boolean isAsSevereAsThreshold(Priority priority) {
+        return false;
+    }
+    
+    public void setThreshold(Priority priority) {
+        this.priority = priority;
+    }
+ }

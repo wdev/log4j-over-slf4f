@@ -16,8 +16,8 @@
 package org.apache.log4j;
 
 /**
- *
- * @author guerra
+* Classe implementada para atender problema de utilização do Log4j pelo Filenet 
+ * P8
  */
 public class PatternLayout extends Layout {
     

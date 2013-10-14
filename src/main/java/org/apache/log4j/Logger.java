@@ -75,5 +75,5 @@ public class Logger extends Category {
   public void trace(Object message, Throwable t) {
     differentiatedLog(null, LOGGER_FQCN, LocationAwareLogger.TRACE_INT, message, null);
   }
-
+  
 }
